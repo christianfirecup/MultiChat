@@ -16,4 +16,4 @@ def OpenAICall(model, uinput):
     return response.output_text
 
 
-print(OpenAICall("gpt-4o", "What is the study of calculus"))
+#print(OpenAICall("gpt-4o", "What is the study of calculus"))
