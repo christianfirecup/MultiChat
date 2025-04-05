@@ -54,7 +54,7 @@ def Grab_Result(threadID, runID):
                 role = message.role
                 content = message.content[0].text.value
                 received = True
-                return f"Multichat: {content}"
+                return f"Multichat,: {content}"
 
 def OpenRouterCall(model, uinput, chatid):
       print("todo")
@@ -64,7 +64,7 @@ def OpenRouterCall(model, uinput, chatid):
 #print(OpenAICall("gpt-4o", "What is the study of calculus"))
 if __name__ == "__main__":
     pmodel = "gpt-4o"
-    assistant = Create_Assistant("test", "Answer questions in a friendly but extremely information mannor", [{"type": "code_interpreter"}], pmodel)
+    assistant = Create_Assistant("test", "Answer questions in a friendly but extremely information mannor any math or programming questions you get print it in a way that that looks good in a windows console", [{"type": "code_interpreter"}], pmodel)
     thread = US.CreateUser()
     thread_id = thread
     user_message = input("Chat With AI: ")
@@ -72,4 +72,4 @@ if __name__ == "__main__":
     run = Create_Run(thread_id, assistant.id)
     run_id = run.id  # Get the run ID from the returned object
     result = Grab_Result(thread_id, run_id)
-    print(result)
+    print("Model :" , pmodel, result)
