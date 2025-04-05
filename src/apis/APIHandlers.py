@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 import requests
 import json
+from src.backend import UserSaves as US
 
 load_dotenv()
 OAIkey = os.getenv("OAI")
@@ -61,14 +62,14 @@ def OpenRouterCall(model, uinput, chatid):
 
 
 #print(OpenAICall("gpt-4o", "What is the study of calculus"))
-
-pmodel = "gpt-4o"
-assistant = Create_Assistant("test", "Answer questions in a friendly but extremely information mannor", [{"type": "code_interpreter"}], pmodel)
-thread = Create_Thread()
-thread_id = thread.id
-user_message = "Hello, how are you?"
-New_Message(user_message, thread_id)
-run = Create_Run(thread_id, assistant.id)
-run_id = run.id  # Get the run ID from the returned object
-result = Grab_Result(thread_id, run_id)
-print(result)
+if __name__ == "__main__":
+    pmodel = "gpt-4o"
+    assistant = Create_Assistant("test", "Answer questions in a friendly but extremely information mannor", [{"type": "code_interpreter"}], pmodel)
+    thread = US.CreateUser()
+    thread_id = thread
+    user_message = input("Chat With AI: ")
+    New_Message(user_message, thread_id)
+    run = Create_Run(thread_id, assistant.id)
+    run_id = run.id  # Get the run ID from the returned object
+    result = Grab_Result(thread_id, run_id)
+    print(result)
