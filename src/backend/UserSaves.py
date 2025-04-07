@@ -15,9 +15,11 @@ def save_json_file(filename, data):
 
 
 def CreateUser():
+    #user question
     print("MultiChat: Welcome to MC(MultiChat) please enter a name for you chat to save your data ")
     NTC = input("Name?: ")
     filename = 'data.json'
+    #load json file
     data = load_json_file(filename)
     target_name = NTC
     found = False

@@ -59,6 +59,8 @@ def Grab_Result(threadID, runID):
 def OpenRouterCall(model, uinput, chatid):
       print("todo")
 
+def RunChat(thread,assistant,run, model):
+    print("todo")
 
 
 #print(OpenAICall("gpt-4o", "What is the study of calculus"))
