@@ -18,10 +18,10 @@ data = {
     "8": "gpt-4o mini",
 }
 
-with open("data.json", "w") as json_file:
+with open("model.json", "w") as json_file:
     json.dump(data, json_file, indent=4)
 
-with open("data.json", "r") as file:
+with open("model.json", "r") as file:
     loaded_data = json.load(file)
     print(loaded_data)
     print("completed")
