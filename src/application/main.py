@@ -5,5 +5,6 @@ text = userinput
 lower_text = text.lower()
 
 print(f"Accessing {userinput} now")
+#todo
 #Create Menu [What LLM user would like to speak]
 
