@@ -59,13 +59,40 @@ def Grab_Result(threadID, runID):
 def OpenRouterCall(model, uinput, chatid):
       print("todo")
 
-def RunChat(thread,assistant,run, model):
-    data = US.load_json_file("model.json")
-    found = False
-    for entry in data:
-        if entry.get('name') == model:
-            print(f"Found {model}")
-            found = True
+def RunChat(model, provider):
+    if provider == "openai":
+        data = US.load_json_file("openai.json")
+        print("[DEBUG] Contents of openai.json:", data)
+        global assistainid
+        assistainid = None
+
+        for key, value in data.items():
+            if value.strip().lower() == model.strip().lower():  # 🛠 robust match
+                print(f"Found {model} with key {key}")
+                assistainid = key
+                break
+
+        if assistainid is None:
+            print(f"Model '{model}' not found in openai.json.")
+            print("Available models:", ", ".join(data.values()))
+            return
+
+        thread_id = US.CreateUser()
+        user_message = input("Chat With AI: ")
+        New_Message(user_message, thread_id)
+        run = Create_Run(thread_id, assistainid)
+        result = Grab_Result(thread_id, run.id)
+        print("Model:", model, result)
+
+
+
+
+
+
+
+    elif provider == "openrouter":
+        print("todo")
+
 
 
 #print(OpenAICall("gpt-4o", "What is the study of calculus"))

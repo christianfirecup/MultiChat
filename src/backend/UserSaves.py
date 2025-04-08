@@ -1,13 +1,16 @@
-
+import os
 import json
 def load_json_file(filename):
+    abs_path = os.path.join(os.path.dirname(__file__), "../../" + filename)
     try:
-        with open(filename, 'r') as f:
+        with open(abs_path, 'r') as f:
             return json.load(f)
     except FileNotFoundError:
-        # If the file doesn't exist, return an empty list.
-        return []
-
+        print(f"[ERROR] File not found: {abs_path}")
+        return {}
+    except json.JSONDecodeError as e:
+        print(f"[ERROR] Failed to parse JSON: {e}")
+        return {}
 # Helper function to save JSON data to a file.
 def save_json_file(filename, data):
     with open(filename, 'w') as f:
