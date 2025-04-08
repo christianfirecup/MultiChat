@@ -1,8 +1,5 @@
-import json
-import os
 from src.apis import APIHandlers as API
 
-#create 2: one for openai, one for every other model
 print("Welcome to MultiChat!")
 print("What Provider would you like to use: openai, openrouter")
 provider = input()
