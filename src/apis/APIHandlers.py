@@ -76,13 +76,17 @@ def RunChat(model, provider):
             print(f"Model '{model}' not found in openai.json.")
             print("Available models:", ", ".join(data.values()))
             return
+        running = True
 
         thread_id = US.CreateUser()
-        user_message = input("Chat With AI: ")
-        New_Message(user_message, thread_id)
-        run = Create_Run(thread_id, assistainid)
-        result = Grab_Result(thread_id, run.id)
-        print("Model:", model, result)
+        while running:
+            user_message = input("Chat With AI: ")
+            if user_message == "stop":
+                break
+            New_Message(user_message, thread_id)
+            run = Create_Run(thread_id, assistainid)
+            result = Grab_Result(thread_id, run.id)
+            print("Model:", model, result)
 
 
 
