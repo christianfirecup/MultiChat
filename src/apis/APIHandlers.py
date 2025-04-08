@@ -95,15 +95,3 @@ def RunChat(model, provider):
 
 
 
-#print(OpenAICall("gpt-4o", "What is the study of calculus"))
-if __name__ == "__main__":
-    pmodel = "gpt-4o"
-    assistant = Create_Assistant("test", "Answer questions in a friendly but extremely information mannor any math or programming questions you get print it in a way that that looks good in a windows console", [{"type": "code_interpreter"}], pmodel)
-    thread = US.CreateUser()
-    thread_id = thread
-    user_message = input("Chat With AI: ")
-    New_Message(user_message, thread_id)
-    run = Create_Run(thread_id, assistant.id)
-    run_id = run.id  # Get the run ID from the returned object
-    result = Grab_Result(thread_id, run_id)
-    print("Model :" , pmodel, result)
