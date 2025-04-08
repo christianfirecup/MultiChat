@@ -60,7 +60,12 @@ def OpenRouterCall(model, uinput, chatid):
       print("todo")
 
 def RunChat(thread,assistant,run, model):
-    print("todo")
+    data = US.load_json_file("model.json")
+    found = False
+    for entry in data:
+        if entry.get('name') == model:
+            print(f"Found {model}")
+            found = True
 
 
 #print(OpenAICall("gpt-4o", "What is the study of calculus"))
